@@ -47,8 +47,14 @@ Score: Itr:100, J_train:0.63, Acc_train: 0.92, (with lambda=0).
 
 next check J_cv, Acc_cv
 
-= 180225 Sun 13:00-
-make environment of git 
+= 180225 Sun 13:00-15:00
+make environment of git 	no count
 
-test
-test2
+= 180226 Mon 04:30-06:30	02:00	total 8:50
+updated github/mnistProject
+calculate Jcv at various lambda: best lambda was 0-10
+completed logistic regression !!
+
+next: visulalization, 
+next: neural network implimentation
+
