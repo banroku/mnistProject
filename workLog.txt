@@ -1,0 +1,54 @@
+= 180217 Sat 06:35-06:55	00:20
+save "mymnist.m" 
+next: make Xcv and Ycv
+
+= 180218 Sun 05:10-06:40	01:30	total 1:50
+saved "mymnist.m", shuffled train, cv, test datasets. 
+saved "reset.m", to reset the environment. 
+saved "featureScaling.m" to scale Xtrain, cv ,test datasets. 
+saved "orderShuffling.m" to shuffle traing data for stocastic decent.
+saved "randomInitTheta.m" to randomly initialize theta.
+
+= 180220 Tue 04:00-6:30		02:30
+saved "checkRC.m" to check if row/column of X be inversed. 
+saved "matrixizeY.m" to generate 0/1 matrix of Y. 
+saved "setEnvironment.m"  (and remove "learningMNIST.m"). 
+saved "costLogisticReg.m" and fill function J 
+
+next: fill function grad
+      gradient checking, (plot)
+
+= 180221 Wed 04:30-06:00	01:30	total 3:20
+saved "costLogisticReg.m"
+saved "trainByLogisticReg.m"
+however, fmincg didnot work. error on line 81 of fmincg.m
+
+next: correct error. might be matrix size of theta having problem? 
+
+
+= 180222 Thu 04:00-06:00	02:00 	total 5:20 
+corrected "trainByLoisticReg.m" by reshape theta matrix to vector
+saved "predict.m"
+saved "calculateAccuracy.m"
+
+finally got Accuracy of training set!! 
+Unfortunately it was deadly small (0.00132), 
+indicating something wrong in my programming.
+
+next: implement gradient checking to verify my cost function
+      (hint: accuracy didn't change even if changing lambda)
+
+= 180223 Fri 04:40-06:10	01:30	total 6:50
+correct "featureScaling.m" to simple type
+implimented gradient checking in "costLogisticReg.m", confirmed gradient is correct
+
+completed logisticRegression! 
+Score: Itr:100, J_train:0.63, Acc_train: 0.92, (with lambda=0). 
+
+next check J_cv, Acc_cv
+
+= 180225 Sun 13:00-
+make environment of git 
+
+test
+test2
