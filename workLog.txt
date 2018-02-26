@@ -56,5 +56,9 @@ calculate Jcv at various lambda: best lambda was 0-10
 completed logistic regression !!
 
 next: visulalization, 
-next: neural network implimentation
 
+= 180226 Mon 20:30-21:30	01:00	total 9:50
+imported displayDATA.m from Prof Ng's cousera
+visualized theta
+
+next: neural network implimentation 
