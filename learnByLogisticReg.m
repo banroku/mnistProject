@@ -1,7 +1,7 @@
 % === Learning By Logistic regression ===
 J = 0;
-lambda = 1;
-iter = 50;
+lambda = 10;
+iter = 010;
 
 % make new theta
 if initializeTheta

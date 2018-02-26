@@ -1,4 +1,5 @@
 mymnist.m
 octave-workspace
 mnist.mat
+*.pdf
 
