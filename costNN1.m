@@ -13,17 +13,24 @@ function [J, grad] = costNN1(X, Y, K1, K2, theta, lambda)
     grad1 = zeros(size(theta1));
     grad2 = zeros(size(theta2));
 
-    z1 = theta1 * X;
-    a1 = sigmoid(z); %use sigmoid?
-    z2 = theta2 * [ones(1, K1); a1];
-    a2 = sigmoid(z2);
+    z2 = theta1 * X;
+    a2 = sigmoid(z2); 
+    z3 = theta2 * [ones(1, m); a2];
+    a3 = sigmoid(z3);
 
-%    % w/o regulation
-%    J = 
-%    grad1 = 
-%    grad2 = 
-%
-%    grad = [grad1(:) grad2(:)];
+    % w/o regulation
+    J = (1/m) * ...
+        ((-Y .* log(a3)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3));
+
+    d3 = a3 - Y;
+    d2 = theta2(:,2:K1)' * d3 .* sigmoidGradient(z2);
+    D2 = D2 + d3 * a2';
+    D1 = D1 + d2 * a1';
+    grad2 = (1/m) * d2; 
+    grad1 = (1/m) * d1;
+
+    grad = [grad1(:) grad2(:)];
+
 %
 %    % == gradient checking ==
 

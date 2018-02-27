@@ -62,3 +62,10 @@ imported displayDATA.m from Prof Ng's cousera
 visualized theta
 
 next: neural network implimentation 
+
+= 180228 Tue 05:00-06:00	01:00	total 10:50
+made NN
+
+next: debug "learnByNN", concretely see below message: 
+error: costNN1: product: nonconformant arguments (op1 is 24x50000, op2 is 25x50000)
+
