@@ -1,5 +1,5 @@
 function [J, grad] = costNN1(X, Y, K1, K2, theta, lambda)
-%cost function [J, grad] = costNN1(X, Y, K1, K2, theta, lambda)
+%function [J, grad, grad_math] = costNN1(X, Y, K1, K2, theta, lambda)
     m = size(X, 2);
     n = size(X, 1);
     Y = matrixizeY(Y, K2);
@@ -32,9 +32,28 @@ function [J, grad] = costNN1(X, Y, K1, K2, theta, lambda)
 
     grad = [grad1(:); grad2(:)];
 
-%
-%    % == gradient checking ==
-
-
+%     % == gradient checking == 
+%     grad_math = zeros(size(grad));
+%     delta = 0.0001;
+%     theta_vect = theta;
+%     for i = 1:100
+%         thetaPlus = theta;
+%         thetaPlus(i) = thetaPlus(i) + delta;
+% 
+%         theta1 = reshape(thetaPlus(1: K1*(n+1)), K1, n+1);
+%         theta2 = reshape(thetaPlus((K1*(n+1) + 1): size(thetaPlus)), K2, K1 + 1);
+% 
+%         z2Plus = theta1 * X;
+%         a2Plus = [ones(1, m); sigmoid(z2Plus)]; 
+%         z3Plus = theta2 * a2Plus;
+%         a3Plus = sigmoid(z3Plus);
+% 
+%         JPlus = (1/m) * sum(sum( ...
+%             (-Y .* log(a3Plus)) - ...
+%             (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3Plus)...
+%             ));
+% 
+%         grad_math(i) = (JPlus-J)/delta;
+%     end
 
 end

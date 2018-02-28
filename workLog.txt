@@ -73,3 +73,7 @@ error: costNN1: product: nonconformant arguments (op1 is 24x50000, op2 is 25x500
 complete NN1 w/o regulation
 
 next: impliment regulation
+
+= 180229 Thu 05:00-
+implimeted gradient checking in costNN.m
+
