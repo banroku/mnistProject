@@ -63,9 +63,13 @@ visualized theta
 
 next: neural network implimentation 
 
-= 180228 Tue 05:00-06:00	01:00	total 10:50
+= 180228 Wed 05:00-06:30	01:30	total 11:20
 made NN
 
 next: debug "learnByNN", concretely see below message: 
 error: costNN1: product: nonconformant arguments (op1 is 24x50000, op2 is 25x50000)
 
+= 180228 Wed 20:20-21:20	01:00	total 12:20
+complete NN1 w/o regulation
+
+next: impliment regulation
