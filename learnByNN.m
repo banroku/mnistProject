@@ -19,20 +19,20 @@ end
 
 tic();
 % train Logstic regressioa
-theta = trainNN1(Xtrain, Ytrain, K1, K2, theta, lambda, iter);
+theta = trainNN(Xtrain, Ytrain, K1, K2, theta, lambda, iter);
 trainingTime = toc();
 
 % continue using trained theta
 initializeTheta = false;
 
 % calculate correct rate
-Pre_train = predictNN1(Xtrain, K1, K2, theta);
+Pre_train = predictNN(Xtrain, K1, K2, theta);
 Acc_train = calculateAccuracy(Ytrain, Pre_train);
 
 % calculate parameters of cross-valication set
-J_train = costNN1(Xtrain, Ytrain, K1, K2, theta, 0);
-J_cv = costNN1(Xcv, Ycv, K1, K2, theta, 0);
-Pre_cv= predictNN1(Xcv, K1, K2, theta);
+J_train = costNN(Xtrain, Ytrain, K1, K2, theta, 0);
+J_cv = costNN(Xcv, Ycv, K1, K2, theta, 0);
+Pre_cv= predictNN(Xcv, K1, K2, theta);
 Acc_cv = calculateAccuracy(Ycv, Pre_cv);
 
 fprintf('Train time (per iter): %f (%f) \n', trainingTime, trainingTime/iter);

@@ -1,4 +1,4 @@
-function [J, grad] = costNN1(X, Y, K1, K2, theta, lambda)
+function [J, grad] = costNN(X, Y, K1, K2, theta, lambda)
 %function [J, grad, grad_math] = costNN1(X, Y, K1, K2, theta, lambda)
     m = size(X, 2);
     n = size(X, 1);

@@ -1,4 +1,4 @@
-function [p, p_rate] = predictNN1(X, K1, K2, theta)
+function [p, p_rate] = predictNN(X, K1, K2, theta)
     m = size(X,2);
     n = size(X,1);
 
