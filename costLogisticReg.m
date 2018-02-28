@@ -19,7 +19,7 @@ function [J, grad] = costLogisticReg(X, Y, theta, lambda)
     % grad = (1/m) * (a - Y) * X';
     % w/o regulation
     J = (1/m) * sum(sum(-Y .* log(a) - not(Y) .* log(ones(size(a))-a))) ...
-        + (lambda/ (2 * m)) * sum(sum(theta(:,2:n))) ;
+        + (lambda/ (2 * m)) * sum(sum(theta(:,2:end).^2)) ;
     
     grad = (1/m) * (a - Y) * X' + (lambda/m) * theta;
     grad(:,1) = (1/m) * (a - Y) * X(1,:)';
