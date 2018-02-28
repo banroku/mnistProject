@@ -31,16 +31,13 @@ Acc_train = calculateAccuracy(Ytrain, Pre_train);
 
 % calculate parameters of cross-valication set
 J_train = costNN1(Xtrain, Ytrain, K1, K2, theta, 0);
-J_cv = costNN2(Xcv, Ycv, K1, K2, theta, 0);
+J_cv = costNN1(Xcv, Ycv, K1, K2, theta, 0);
 Pre_cv= predictNN1(Xcv, K1, K2, theta);
 Acc_cv = calculateAccuracy(Ycv, Pre_cv);
 
-fprintf('Training time is: %f \n', trainingTime);
-fprintf('Training time per iter: %f \n', trainingTime/iter);
-fprintf('Cost of train set is: %f \n', J_train);
-fprintf('Cost of cv set is: %f \n', J_cv);
-fprintf('Accuracy of train set is: %f \n', Acc_train);
-fprintf('Accuracy of cv set is: %f \n', Acc_cv);
+fprintf('Train time (per iter): %f (%f) \n', trainingTime, trainingTime/iter);
+fprintf('Cost (train, cv): %f, %f \n', J_train, J_cv);
+fprintf('Accuracy (train, cv): %f, %f \n', Acc_train, Acc_cv);
 
 % calculate costs
 

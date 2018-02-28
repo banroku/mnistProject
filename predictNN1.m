@@ -12,10 +12,11 @@ function [p, p_rate] = predictNN1(X, K1, K2, theta)
     X = [ones(1, m); X];
 
     z2 = theta1 * X;
-    a2 = sigmoid(z2); 
-    z3 = theta2 * [ones(1, K1); a2];
+    a2 = [ones(1, m); sigmoid(z2)]; 
+    z3 = theta2 * a2;
     a3 = sigmoid(z3);
 
     [p_rate, p] = max(a3);
-    
+
+
 end
