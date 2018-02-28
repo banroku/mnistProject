@@ -21,26 +21,18 @@ trainingTime = toc();
 initializeTheta = false;
 
 % calculate correct rate
-Pre_train = predict(Xtrain, theta);
+Pre_train = predictLogisticReg(Xtrain, theta);
 Acc_train = calculateAccuracy(Ytrain, Pre_train);
 
 % calculate parameters of cross-valication set
 J_train = costLogisticReg(Xtrain, Ytrain, theta, 0);
 J_cv = costLogisticReg(Xcv, Ycv, theta, 0);
-Pre_cv= predict(Xcv, theta);
+Pre_cv= predictLogisticReg(Xcv, theta);
 Acc_cv = calculateAccuracy(Ycv, Pre_cv);
 
-fprintf('Training time is: %f \n', trainingTime);
-fprintf('Training time per iter: %f \n', trainingTime/iter);
-fprintf('Cost of train set is: %f \n', J_train);
-fprintf('Cost of cv set is: %f \n', J_cv);
-fprintf('Accuracy of train set is: %f \n', Acc_train);
-fprintf('Accuracy of cv set is: %f \n', Acc_cv);
-
-% calculate costs
-
-
-
+fprintf('Train time (per iter): %f (%f) \n', trainingTime, trainingTime/iter);
+fprintf('Cost (train, cv): %f, %f \n', J_train, J_cv);
+fprintf('Accuracy (train, cv): %f, %f \n', Acc_train, Acc_cv);
 
 
 % === End: Logistic regression ===

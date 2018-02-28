@@ -1,4 +1,4 @@
-function [p, p_rate] = predict(X, theta)
+function [p, p_rate] = predictLogisticReg(X, theta)
     m = size(X,2);
     n = size(X,1);
     K = size(theta) / (n + 1);
