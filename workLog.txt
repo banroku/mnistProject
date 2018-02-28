@@ -74,6 +74,10 @@ complete NN1 w/o regulation
 
 next: impliment regulation
 
-= 180229 Thu 05:00-
+= 180229 Thu 05:00-06:30	01:30	total 12:50
 implimeted gradient checking in costNN.m
+implimeted ragularized NN
+completed NN!
+
+next: visulaization, stochastic decent, SVM
 

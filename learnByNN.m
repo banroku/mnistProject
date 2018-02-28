@@ -1,7 +1,7 @@
 % === Learning By Logistic regression ===
 J = 0;
-lambda = 00;
-iter = 001;
+lambda = 000;
+iter = 100;
 
 % === architecture of NN ==
 K1 = 25;

@@ -18,17 +18,29 @@ function [J, grad] = costNN(X, Y, K1, K2, theta, lambda)
     z3 = theta2 * a2;
     a3 = sigmoid(z3);
 
-    % w/o regulation
+    % unregulaized
+    % J = (1/m) * sum(sum( ...
+    %     (-Y .* log(a3)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3)...
+    %     ));
     J = (1/m) * sum(sum( ...
-        (-Y .* log(a3)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3)...
-        ));
+        (-Y .* log(a3)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3) ...
+        )) + ...
+        (lambda/(2 * m)) * ( ...
+        sum(sum(theta1(:,2:end).^2)) + sum(sum(theta2(:,2:end).^2)) ...
+        );
 
     d3 = a3 - Y;
     d2 = theta2(:,2:end)' * d3 .* sigmoidGradient(z2);
     D2 = d3 * a2';
     D1 = d2 * X';
-    grad2 = (1/m) * D2; 
-    grad1 = (1/m) * D1;
+
+    % unregulized
+    % grad2 = (1/m) * D2; 
+    % grad1 = (1/m) * D1; 
+    grad2 = (1/m) * D2 + (lambda/m) * theta2; 
+    grad2(:,1) = (1/m) * D2(:,1);
+    grad1 = (1/m) * D1 + (lambda/m) * theta1; 
+    grad1(:,1) = (1/m) * D1(:,1);
 
     grad = [grad1(:); grad2(:)];
 
