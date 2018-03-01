@@ -1,17 +1,14 @@
 % === Learning By Logistic regression ===
 J = 0;
 lambda = 050;
-iter = 010;
+iter = 001;
 
 % === architecture of NN ==
-K1 = 100;
-K2 = 10;
+K_NN = [25 10]
 
 % make new theta
 if initializeTheta
-    theta1 = randomInitTheta(zeros(K1, n + 1));
-    theta2 = randomInitTheta(zeros(K2, K1 + 1));
-    theta = [theta1(:); theta2(:)];
+    theta = generateTheta(Xtrain, K_NN);
 end
 
 % %calculate initical J and theta

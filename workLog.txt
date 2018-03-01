@@ -84,5 +84,6 @@ next: visulaization, stochastic decent, SVM
 - 180302 Fri 04:30-05:30	01:00	total 13:50
 tried 100 nodes. 
 
-next: stochastic decent, more deep learning, SVM
-
+add generateTheta.m with K as vector
+next: vectorize K1, K2 to K in all program to adopt generalized NN architechture
+then next: stochastic decent, SVM
