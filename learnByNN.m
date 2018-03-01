@@ -1,10 +1,10 @@
 % === Learning By Logistic regression ===
 J = 0;
-lambda = 000;
-iter = 100;
+lambda = 050;
+iter = 010;
 
 % === architecture of NN ==
-K1 = 25;
+K1 = 100;
 K2 = 10;
 
 % make new theta
