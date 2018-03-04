@@ -81,9 +81,15 @@ completed NN!
 
 next: visulaization, stochastic decent, SVM
 
-- 180302 Fri 04:30-05:30	01:00	total 13:50
+= 180302 Fri 04:30-05:30	01:00	total 13:50
 tried 100 nodes. 
 
 add generateTheta.m with K as vector
 next: vectorize K1, K2 to K in all program to adopt generalized NN architechture
 then next: stochastic decent, SVM
+
+= 180305 Mon 03:30-06:30	03:00	total 16:50
+implimented generlized NN!
+
+next: cost doesn't match in learning and J calculation. 
+next: gradient checking to confirm generalization, then stochastic decent, then SVM
