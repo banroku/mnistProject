@@ -93,3 +93,12 @@ implimented generlized NN!
 
 next: cost doesn't match in learning and J calculation. 
 next: gradient checking to confirm generalization, then stochastic decent, then SVM
+
+= 180307 Wed 04:30-06:30	0:40	total 17:30
+implimented gradient checking in generalized NN -> ok
+implimented regularized NN!
+
+next: stochastic decent
+
+- 180308 Thu 06:00-
+

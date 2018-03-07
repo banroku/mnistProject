@@ -1,11 +1,10 @@
 function [J, Grad] = costGeneralizedNN(X, Y, k, Theta, lambda)
-%function [J, grad, grad_math] = costNN1(X, Y, K1, K2, theta, lambda)
+%function [J, Grad, Grad_math] = costGeneralizedNN(X, Y, k, Theta, lambda)
     m = size(X, 2);
     n = size(X, 1);
     K = [n; k];
     depth = size(K,1);
     Y = matrixizeY(Y, K(end));
-
     J = 0;
     theta = cell(depth,1);
     grad = cell(depth,1);
@@ -30,19 +29,19 @@ function [J, Grad] = costGeneralizedNN(X, Y, k, Theta, lambda)
     end
     h = a{depth}(2:end,:); %remove bias at final layer
 
-    %unregulaized
-    J = (1/m) * sum(sum( ...
-        (-Y .* log(h)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - h)...
-        ));
+%    %unregulaized cost function
+%    J = (1/m) * sum(sum( ...
+%        (-Y .* log(h)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - h)...
+%        ));
 
-%     regularized
-%     J = (1/m) * sum(sum( ...
-%         (-Y .* log(a3)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3) ...
-%         )) + ...
-%         (lambda/(2 * m)) * ( ...
-%         sum(sum(theta1(:,2:end).^2)) + sum(sum(theta2(:,2:end).^2)) ...
-%         );
-% 
+   %regulaized cost function
+   JReg = 0;
+   for i = 1:depth-1
+       JReg = JReg + (lambda/(2 * m)) * sum(sum(theta{i}(:,2:end).^2));
+   end
+   J = (1/m) * sum(sum( ...
+       (-Y .* log(h)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - h)...
+       )) + JReg;
 
     %Backword
     d = cell(depth, 1);
@@ -57,9 +56,17 @@ function [J, Grad] = costGeneralizedNN(X, Y, k, Theta, lambda)
         D{end-i} = d{end+1-i} * a{end-i}';
     end
 
+    %regularized gradiet
     for i = 1:depth-1
-        grad{end-i} = (1/m) * D{end-i}; 
+        grad{end-i} = (1/m) * D{end-i} + (lambda/m) * theta{end-i}; 
+        grad{end-i}(:,1) = (1/m) * D{end-i}(:,1);
     end
+
+%     %unregularized gradiet
+%     for i = 1:depth-1
+%         grad{end-i} = (1/m) * D{end-i}; 
+%     end
+
 %    regularized
 %    grad2 = (1/m) * D2 + (lambda/m) * theta2; 
 %    grad2(:,1) = (1/m) * D2(:,1);
@@ -70,27 +77,38 @@ function [J, Grad] = costGeneralizedNN(X, Y, k, Theta, lambda)
     end 
 
 %     % == gradient checking == 
-%     grad_math = zeros(size(grad));
+%     Grad_math = zeros(size(Grad));
 %     delta = 0.0001;
-%     theta_vect = theta;
-%     for i = 1:100
-%         thetaPlus = theta;
-%         thetaPlus(i) = thetaPlus(i) + delta;
+%     thetaPlus = cell(depth,1);
 % 
-%         theta1 = reshape(thetaPlus(1: K1*(n+1)), K1, n+1);
-%         theta2 = reshape(thetaPlus((K1*(n+1) + 1): size(thetaPlus)), K2, K1 + 1);
+%     for j = 1:010
+%         ThetaPlus = Theta;
+%         ThetaPlus(j) = ThetaPlus(j) + delta;
 % 
-%         z2Plus = theta1 * X;
-%         a2Plus = [ones(1, m); sigmoid(z2Plus)]; 
-%         z3Plus = theta2 * a2Plus;
-%         a3Plus = sigmoid(z3Plus);
+%         sep2 = 0;
+%         for i = 1:depth-1
+%              sep1 = sep2 + 1;
+%              sep2 = sep2 + K(i+1) * ( K(i) + 1 );
+%              thetaPlus{i} = reshape(ThetaPlus(sep1:sep2), K(i+1), K(i) + 1);
+%         end
 % 
+%         %forward
+%         zPlus = cell(depth, 1);
+%         aPlus = cell(depth, 1);
+%         aPlus{1} = [ones(1, m); X]; 
+% 
+%         for i = 1:depth-1
+%             zPlus{i+1} = thetaPlus{i} * aPlus{i};
+%             aPlus{i+1} = [ones(1, m); sigmoid(zPlus{i+1})];
+%         end
+%         hPlus = aPlus{depth}(2:end,:); %remove bias at final layer
+% 
+%         %unregulaized cost function
 %         JPlus = (1/m) * sum(sum( ...
-%             (-Y .* log(a3Plus)) - ...
-%             (ones(size(Y)) - Y) .* log(ones(size(Y)) - a3Plus)...
+%             (-Y .* log(hPlus)) - (ones(size(Y)) - Y) .* log(ones(size(Y)) - hPlus)...
 %             ));
 % 
-%         grad_math(i) = (JPlus-J)/delta;
+%         Grad_math(j) = (JPlus-J)/delta;
 %     end
 
 end
