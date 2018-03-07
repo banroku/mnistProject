@@ -1,16 +1,16 @@
 % === Learning By Logistic regression ===
 J = 0;
-lambda = 000;
-iter = 005;
+lambda = 050;
+iter = 200;
 
 % === architecture of NN ==
-K_NN = [25; 10];
-K1 = 25;
-K2 = 10;
+K = [100; 25; 10];
+K1 = K(1);
+K2 = K(2);
 
 % make new theta
 if initializeTheta
-    theta = generateTheta(Xtrain, K_NN);
+    theta = generateTheta(Xtrain, K);
 end
 
 tic();
@@ -18,7 +18,7 @@ tic();
 % % train by NN
 % theta = trainNN(Xtrain, Ytrain, K1, K2, theta, lambda, iter);
 % train by generalized NN
-theta = trainNN(Xtrain, Ytrain, K1, K2, theta, lambda, iter);
+theta = trainGeneralizedNN(Xtrain, Ytrain, K, theta, lambda, iter);
 
 trainingTime = toc();
 
@@ -26,13 +26,13 @@ trainingTime = toc();
 initializeTheta = false;
 
 % calculate correct rate
-Pre_train = predictNN(Xtrain, K1, K2, theta);
+Pre_train = predictGeneralizedNN(Xtrain, K, theta);
 Acc_train = calculateAccuracy(Ytrain, Pre_train);
 
 % calculate parameters of cross-valication set
-J_train = costNN(Xtrain, Ytrain, K1, K2, theta, 0);
-J_cv = costNN(Xcv, Ycv, K1, K2, theta, 0);
-Pre_cv= predictNN(Xcv, K1, K2, theta);
+J_train = costGeneralizedNN(Xtrain, Ytrain, K, theta, 0);
+J_cv = costGeneralizedNN(Xcv, Ycv, K, theta, 0);
+Pre_cv= predictGeneralizedNN(Xcv, K, theta);
 Acc_cv = calculateAccuracy(Ycv, Pre_cv);
 
 fprintf('Train time (per iter): %f (%f) \n', trainingTime, trainingTime/iter);
