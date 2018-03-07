@@ -1,10 +1,10 @@
 % === Learning By Logistic regression ===
 J = 0;
 lambda = 050;
-iter = 200;
+iter = 100;
 
 % === architecture of NN ==
-K = [100; 25; 10];
+K = [25; 100; 10];
 K1 = K(1);
 K2 = K(2);
 

@@ -101,4 +101,6 @@ implimented regularized NN!
 next: stochastic decent
 
 - 180308 Thu 06:00-
+fix github issue, 
 
+next: stochastic decent <- move LogisticReg and NN to other folder (too crowded.)
