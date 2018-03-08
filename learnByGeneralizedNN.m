@@ -1,24 +1,23 @@
 % === Learning By Logistic regression ===
 J = 0;
-lambda = 050;
-iter = 100;
+lambda = 0.000;
+iter = 001;
+batchSize = 00100;
 
 % === architecture of NN ==
-K = [25; 100; 10];
-K1 = K(1);
-K2 = K(2);
+K = [100 ; 200; 10];
 
 % make new theta
 if initializeTheta
     theta = generateTheta(Xtrain, K);
+    theta_init = theta;
 end
-
 tic();
 
 % % train by NN
 % theta = trainNN(Xtrain, Ytrain, K1, K2, theta, lambda, iter);
 % train by generalized NN
-theta = trainGeneralizedNN(Xtrain, Ytrain, K, theta, lambda, iter);
+theta = trainGeneralizedNN(Xtrain, Ytrain, K, theta, lambda, iter, batchSize);
 
 trainingTime = toc();
 
