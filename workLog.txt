@@ -100,5 +100,14 @@ implimented regularized NN!
 
 next: stochastic decent
 
-- 180308 Thu 06:00-
+= 180308 Thu 06:00-06:30	0:30	total 17:30
+fix github issue, 
+
+next: stochastic decent <- move LogisticReg and NN to other folder (too crowded.)
+
+= 180309 Fri 05:30-06:30	1:00	total 18:30
+complete stochastic decent! ULTRA FAST! only an epoch needed!
+but to adjust lambda. 
+
+next: J and cost at fminic was not equal, need investigation.
 
