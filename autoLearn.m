@@ -39,9 +39,8 @@ for i = 1:4
         J_cv = costGeneralizedNN(Xcv, Ycv, K, theta, 0);
         Pre_cv= predictGeneralizedNN(Xcv, K, theta);
         Acc_cv = calculateAccuracy(Ycv, Pre_cv);
-	result((i-1)*length(lambda_screen)+j,:) = ...
+	result((i-1) * length(lambda_screen) + j, :) = ...
             [i lambda J_train J_cv Acc_train Acc_cv trainingTime/iter];
-	fprintf('Result table up to now: \n%f',result);
-        save result.m result;
+        save result.mat result;
     end
 end

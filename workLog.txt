@@ -111,3 +111,8 @@ but to adjust lambda.
 
 next: J and cost at fminic was not equal, need investigation.
 
+= 180312 Mon 21:30-22:00	0:30	total 19:00
+completed autoLearn and check four kind of NN structure. 
+Any model didn't go beyond 99%. 
+
+
